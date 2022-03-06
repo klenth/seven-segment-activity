@@ -3,7 +3,7 @@
     box-sizing: border-box;
     
     --segment-length: 48px;
-    --segment-thickness: 8px;
+    --segment-thickness: 12px;
     /*
     --display-width: 64px;
     --display-height: 96px;

@@ -22,4 +22,5 @@ render(
 render(
     <OptimalFunctions />,
     document.getElementById('react-optimal-functions')
-)
+);
+

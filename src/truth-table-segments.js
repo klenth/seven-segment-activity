@@ -1,6 +1,7 @@
 import React from 'react';
 import TruthTable from './truth-table';
 import './truth-table-segments.css';
+import util from './util';
 import DigitDisplay from "./digit-display";
 
 export default class TruthTableSegments extends React.Component {
@@ -41,6 +42,20 @@ export default class TruthTableSegments extends React.Component {
                     slots={this.state.slots}
                     handleChange={(index, output, value) => this.handleChange(index, output, value)}
                 />
+
+                <div className={'clipboard-controls'}>
+                    <button
+                        onClick={() => this.handleCopy()}
+                    >Copy all</button>
+                    <input
+                        type={'text'}
+                        id={'truth-table-paste-box'}
+                        defaultValue={''}
+                        />
+                    <button
+                        onClick={() => this.handlePaste()}
+                    >Import</button>
+                </div>
             </>
         )
     }
@@ -66,4 +81,44 @@ export default class TruthTableSegments extends React.Component {
         })
     }
 
+    handleCopy() {
+        console.log("Copying!");
+        // Encode each row as a base-3 number (0=0, 1=1, 2=null)
+        const rows = [...Array(10).keys()].map(i => {
+            let value = 0;
+            for (let j = 0; j < this.state.slots[i].length; ++j) {
+                let d = (this.state.slots[i][j] === null) ? 2 : this.state.slots[i][j];
+                value = 3 * value + d;
+            }
+            return value;
+        });
+        const data = util.encode(rows);
+        navigator.clipboard.writeText(data).then(() => console.log("Copied"));
+    }
+
+    handlePaste() {
+        console.log("Pasting!");
+        const pastedText = document.getElementById('truth-table-paste-box').value;
+        const data = util.decode(pastedText);
+        console.log(data);
+
+        if (!(data instanceof Array) || data.length !== this.state.slots.length)
+            console.warn("Invalid pasted data");
+        else {
+            const newSlots = this.state.slots.slice();
+            for (let i = 0; i < data.length; ++i) {
+                newSlots[i] = newSlots[i].slice();
+                let value = parseInt(data[i]);
+                for (let j = this.state.slots[i].length - 1; j >= 0; --j) {
+                    const d = value % 3;
+                    newSlots[i][j] = (d === 2) ? null : d;
+                    value = util.integer_quotient(value, 3);
+                }
+            }
+
+            const newState = Object.assign({}, this.state);
+            newState.slots = newSlots;
+            this.setState(newState);
+        }
+    }
 }
