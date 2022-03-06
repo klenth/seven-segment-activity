@@ -207,17 +207,7 @@ class XorNode extends BinaryNode {
     }
 }
 
-/*
-exports.BitNode = BitNode;
-exports.VarNode = VarNode;
-exports.NotNode = NotNode;
-exports.AndNode = AndNode;
-exports.OrNode = OrNode;
-exports.XorNode = XorNode;
-exports.getNode = getNode;
-exports.reset = reset;*/
-
-exports = {
+const exports = {
     BitNode: BitNode,
     VarNode: VarNode,
     NotNode: NotNode,

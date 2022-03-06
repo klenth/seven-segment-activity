@@ -4,15 +4,15 @@ import './index.css';
 import BooleanFunctions from './boolean-functions';
 import TruthTableSegments from './truth-table-segments';
 
-/*ReactDOM.*/ render(
+render(
   <BooleanFunctions />,
   document.getElementById('react-boolean-functions')
 );
 
 render(
     <TruthTableSegments
-      inputs={['a', 'b', 'c', 'd']}
-      outputs={['A', 'B', 'C', 'D', 'E', 'F', 'G']}
+      inputs={['w', 'x', 'y', 'z']}
+      outputs={['a', 'b', 'c', 'd', 'e', 'f', 'g']}
       rowCount={10}
     />,
     document.getElementById('react-truth-table-segments')
