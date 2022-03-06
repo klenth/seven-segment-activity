@@ -1,0 +1,30 @@
+.truth-table {
+    font-family: monospace;
+    border-collapse: collapse;
+}
+
+.truth-table tr > * {
+    width: 2em;
+    text-align: center;
+}
+
+.truth-table .last-input {
+    padding-right: 16px;
+    border-right: 3px solid var(--color-for-chrome);
+}
+
+.truth-table .first-output {
+    padding-left: 16px;
+}
+
+.truth-table td input {
+    width: 1em;
+    text-align: center;
+    border: none;
+    font-family: monospace;
+    background-color: transparent;
+}
+
+.truth-table tbody tr:nth-child(2n) > * {
+    background-color: #00b5e220;
+}

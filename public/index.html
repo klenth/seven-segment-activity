@@ -1,43 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html lang="en-us" dir="ltr" class="fancy">
+<head>
+    <meta charset="utf-8">
+    <title>CMPT 328 — Activity 3.x</title>
+    <link rel="stylesheet" type="text/css" href="homework.css">
+</head>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<body>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<nav>
+    <ul class="problem-links"></ul>
+    <div class="icon"></div>
+</nav>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+<main class="justified">
+    <div class="assignment-info">
+        <h1>CMPT 328 — Activity 3.x</h1>
+
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Seven-segment_display">Seven-segment displays</a> are used in some simple electronics (such as microwaves, digital clocks, etc.), frequently to show lengths of time and such. For example, below is a seven-segment display showing the digit 7:
+        </p>
+        <p class="centered">
+            <img src="seven-segment-display-7.png">
+        </p>
+
+        <p>
+            In a seven-segment display component, there are seven input wires, each controlling whether one of the seven segments is illuminated. Your task in this activity is to determine a Boolean function for each of those seven input wires so that the display correctly shows each of the 10 digits, 0 through 9.
+        </p>
+
+        <p class="centered">
+            <img src="seven-segment-display-adapter.png">
+        </p>
+
+        <p>
+            Specifically, you will have four Boolean inputs representing the four bits of the number (0000 for 0 through 1001 for 9). Using those, you will construct seven Boolean functions, one for each segment of the display, so that the display shows each digit correctly.
+        </p>
+
+        <div class="total points"></div>
+    </div>
+
+    <div class="problems">
+        <div class="problem">
+            <div class="title">Truth table</div>
+
+            <p>
+                Start by filling out a truth table for what the seven-segment display should show for each digit. In this table, the four inputs (w, x, y, and z) are the four bits of the number — for example, the number 5 (0101 in binary) would be the row w=0, x=1, y=0, z=1. The seven outputs each represent one of the segments (labeled a through g) of the seven-segment display. The truth table has only 10 rows because these are the only rows we care about: it is assumed that we will never be passed a value greater than 9. (In other words, the omitted six rows would all be “don’t-cares.”)
+            </p>
+
+            <p>
+                Experiment with filling in the truth table and seeing which segments get illuminated as you put in ones. (Blanks are the same as zeros for purposes of this table.) Once you get the hang of it, work with your team on filling in the truth table until you are all satisfied with how each digit is displayed.
+            </p>
+
+            <div id="react-truth-table-segments"></div>
+
+            <div class="total points">20 points</div>
+        </div>
+
+        <div class="problem">
+            <div class="title">Boolean functions</div>
+
+            <div id="react-boolean-functions"></div>
+        </div>
+    </div>
+
+
+</main>
+
+<script src="homework.js"></script>
+</script>
+</body>
 </html>

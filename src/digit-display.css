@@ -1,0 +1,18 @@
+.digit-display {
+    display: inline-block;
+    padding: 8px;
+    margin: 16px;
+}
+
+.digit-display .digit {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+.digit-display .digit .binary {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: monospace;
+}

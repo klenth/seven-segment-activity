@@ -1,0 +1,93 @@
+.seven-segment-display {
+    display: inline-block;
+    box-sizing: border-box;
+    
+    --segment-length: 48px;
+    --segment-thickness: 8px;
+    /*
+    --display-width: 64px;
+    --display-height: 96px;
+    */
+    --display-width: calc(2 * var(--segment-thickness) + var(--segment-length));
+    --display-height: calc(3 * var(--segment-thickness) + 2 * var(--segment-length));
+    
+    /*
+    --segment-color-off: #a8000018;
+    --segment-color-on: red;
+    --segment-color-highlight: #f22;
+    --segment-color-shadow: #d00;
+    */
+    
+    --segment-color-off: #0000a818;
+    --segment-color-on: blue;
+    --segment-color-highlight: #22f;
+    --segment-color-shadow: #00d;
+    
+    width: var(--display-width);
+    height: var(--display-height);
+    
+    border-radius: 4px;
+    position: relative;
+}
+
+.seven-segment-display .segment {
+    position: absolute;
+}
+
+.seven-segment-display .segment .bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--segment-color-off);
+    border-radius: calc(0.5 * var(--segment-thickness));
+
+}
+
+.seven-segment-display .segment.on .bar {
+    background-color: var(--segment-color-on);
+    border: 3px solid;
+    border-color: var(--segment-color-highlight) var(--segment-color-shadow) var(--segment-color-shadow) var(--segment-color-highlight);
+    box-shadow: 0 0 4px #00f8;
+}
+
+.seven-segment-display .segment.horizontal {
+    width: 100%;
+    height: var(--segment-thickness);
+}
+
+.seven-segment-display .segment.horizontal .bar {
+    left: var(--segment-thickness);
+    right: var(--segment-thickness);
+}
+
+.seven-segment-display .segment.vertical {
+    width: var(--segment-thickness);
+    height: 50%;
+}
+
+.seven-segment-display .segment.vertical .bar {
+    top: var(--segment-thickness);
+    bottom: calc(0.5 * var(--segment-thickness));
+}
+
+.seven-segment-display .segment.x-0 {
+    left: 0;
+}
+
+.seven-segment-display .segment.x-1 {
+    right: 0;
+}
+
+.seven-segment-display .segment.y-0 {
+    top: 0;
+}
+
+.seven-segment-display .segment.y-1 {
+    top: calc(0.5 * (var(--display-height) - var(--segment-thickness)));
+}
+
+.seven-segment-display .segment.y-2 {
+    bottom: 0;
+}

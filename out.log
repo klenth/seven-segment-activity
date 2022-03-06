@@ -1,0 +1,259 @@
+yarn run v1.22.17
+$ react-app-rewired start
+{
+  target: [ 'browserslist' ],
+  mode: 'development',
+  bail: false,
+  devtool: 'cheap-module-source-map',
+  entry: '/home/kathy/tmp/helper/src/index.js',
+  output: {
+    path: '/home/kathy/tmp/helper/build',
+    pathinfo: true,
+    filename: 'static/js/bundle.js',
+    chunkFilename: 'static/js/[name].chunk.js',
+    assetModuleFilename: 'static/media/[name].[hash][ext]',
+    publicPath: '/~kathy/2022spring/cmpt328/seven-segments/',
+    devtoolModuleFilenameTemplate: [Function (anonymous)]
+  },
+  cache: {
+    type: 'filesystem',
+    version: '7abdfe24f0b48eeaf9e583370d6aa2f6',
+    cacheDirectory: '/home/kathy/tmp/helper/node_modules/.cache',
+    store: 'pack',
+    buildDependencies: { defaultWebpack: [Array], config: [Array], tsconfig: [] }
+  },
+  infrastructureLogging: { level: 'none' },
+  optimization: {
+    minimize: false,
+    minimizer: [ [TerserPlugin], [CssMinimizerPlugin] ]
+  },
+  resolve: {
+    modules: [ 'node_modules', '/home/kathy/tmp/helper/node_modules' ],
+    extensions: [
+      '.web.mjs', '.mjs',
+      '.web.js',  '.js',
+      '.json',    '.web.jsx',
+      '.jsx'
+    ],
+    alias: { 'react-native': 'react-native-web' },
+    plugins: [ [ModuleScopePlugin] ]
+  },
+  module: { strictExportPresence: true, rules: [ [Object], [Object] ] },
+  plugins: [
+    HtmlWebpackPlugin { userOptions: [Object], version: 5 },
+    InterpolateHtmlPlugin {
+      htmlWebpackPlugin: [Function],
+      replacements: [Object]
+    },
+    ModuleNotFoundPlugin {
+      appPath: '/home/kathy/tmp/helper',
+      yarnLockFile: undefined,
+      useYarnCommand: [Function: bound useYarnCommand],
+      getRelativePath: [Function: bound getRelativePath],
+      prettierError: [Function: bound prettierError]
+    },
+    DefinePlugin { definitions: [Object] },
+    ReactRefreshPlugin { options: [Object] },
+    CaseSensitivePathsPlugin {
+      options: {},
+      logger: [Object [console]],
+      pathCache: Map(0) {},
+      fsOperations: 0,
+      primed: false
+    },
+    WebpackManifestPlugin { options: [Object] },
+    IgnorePlugin {
+      options: [Object],
+      checkIgnore: [Function: bound checkIgnore]
+    },
+    ESLintWebpackPlugin {
+      key: 'ESLintWebpackPlugin',
+      options: [Object],
+      run: [Function: bound run] AsyncFunction
+    }
+  ],
+  performance: false
+}
+Starting the development server...
+
+Failed to compile.
+
+Module not found: Error: Can't resolve 'fs' in '/home/kathy/tmp/helper/node_modules/antlr4/src/antlr4'
+asset static/js/bundle.js 2.05 MiB [emitted] (name: main) 1 related asset
+asset index.html 1.91 KiB [emitted]
+asset asset-manifest.json 313 bytes [emitted]
+cached modules 1.9 MiB (javascript) 28.2 KiB (runtime) [cached] 170 modules
+
+ERROR in ./node_modules/antlr4/src/antlr4/CharStreams.js 7:11-24
+Module not found: Error: Can't resolve 'fs' in '/home/kathy/tmp/helper/node_modules/antlr4/src/antlr4'
+resolve 'fs' in '/home/kathy/tmp/helper/node_modules/antlr4/src/antlr4'
+  Parsed request is a module
+  using description file: /home/kathy/tmp/helper/node_modules/antlr4/package.json (relative path: ./src/antlr4)
+    Field 'browser' doesn't contain a valid alias configuration
+    resolve as module
+      /home/kathy/tmp/helper/node_modules/antlr4/src/antlr4/node_modules doesn't exist or is not a directory
+      /home/kathy/tmp/helper/node_modules/antlr4/src/node_modules doesn't exist or is not a directory
+      /home/kathy/tmp/helper/node_modules/antlr4/node_modules doesn't exist or is not a directory
+      /home/kathy/tmp/helper/node_modules/node_modules doesn't exist or is not a directory
+      looking for modules in /home/kathy/tmp/helper/node_modules
+        single file module
+          using description file: /home/kathy/tmp/helper/package.json (relative path: ./node_modules/fs)
+            no extension
+              /home/kathy/tmp/helper/node_modules/fs doesn't exist
+            .web.mjs
+              /home/kathy/tmp/helper/node_modules/fs.web.mjs doesn't exist
+            .mjs
+              /home/kathy/tmp/helper/node_modules/fs.mjs doesn't exist
+            .web.js
+              /home/kathy/tmp/helper/node_modules/fs.web.js doesn't exist
+            .js
+              /home/kathy/tmp/helper/node_modules/fs.js doesn't exist
+            .json
+              /home/kathy/tmp/helper/node_modules/fs.json doesn't exist
+            .web.jsx
+              /home/kathy/tmp/helper/node_modules/fs.web.jsx doesn't exist
+            .jsx
+              /home/kathy/tmp/helper/node_modules/fs.jsx doesn't exist
+        /home/kathy/tmp/helper/node_modules/fs doesn't exist
+      /home/kathy/tmp/node_modules doesn't exist or is not a directory
+      looking for modules in /home/kathy/node_modules
+        single file module
+          using description file: /home/kathy/package.json (relative path: ./node_modules/fs)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs doesn't exist
+            .web.mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.web.mjs doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.mjs doesn't exist
+            .web.js
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.web.js doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.js doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.json doesn't exist
+            .web.jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.web.jsx doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.jsx doesn't exist
+        /home/kathy/node_modules/fs doesn't exist
+      /home/node_modules doesn't exist or is not a directory
+      /node_modules doesn't exist or is not a directory
+      looking for modules in /home/kathy/tmp/helper/node_modules
+        single file module
+          using description file: /home/kathy/tmp/helper/package.json (relative path: ./node_modules/fs)
+            no extension
+              /home/kathy/tmp/helper/node_modules/fs doesn't exist
+            .web.mjs
+              /home/kathy/tmp/helper/node_modules/fs.web.mjs doesn't exist
+            .mjs
+              /home/kathy/tmp/helper/node_modules/fs.mjs doesn't exist
+            .web.js
+              /home/kathy/tmp/helper/node_modules/fs.web.js doesn't exist
+            .js
+              /home/kathy/tmp/helper/node_modules/fs.js doesn't exist
+            .json
+              /home/kathy/tmp/helper/node_modules/fs.json doesn't exist
+            .web.jsx
+              /home/kathy/tmp/helper/node_modules/fs.web.jsx doesn't exist
+            .jsx
+              /home/kathy/tmp/helper/node_modules/fs.jsx doesn't exist
+        /home/kathy/tmp/helper/node_modules/fs doesn't exist
+ @ ./node_modules/antlr4/src/antlr4/index.js 12:0-46
+ @ ./src/boolean-functions.js 6:0-28
+ @ ./src/index.js 9:0-24 275:29-32
+
+ERROR in ./node_modules/antlr4/src/antlr4/FileStream.js 7:11-24
+Module not found: Error: Can't resolve 'fs' in '/home/kathy/tmp/helper/node_modules/antlr4/src/antlr4'
+resolve 'fs' in '/home/kathy/tmp/helper/node_modules/antlr4/src/antlr4'
+  Parsed request is a module
+  using description file: /home/kathy/tmp/helper/node_modules/antlr4/package.json (relative path: ./src/antlr4)
+    Field 'browser' doesn't contain a valid alias configuration
+    resolve as module
+      /home/kathy/tmp/helper/node_modules/antlr4/src/antlr4/node_modules doesn't exist or is not a directory
+      /home/kathy/tmp/helper/node_modules/antlr4/src/node_modules doesn't exist or is not a directory
+      /home/kathy/tmp/helper/node_modules/antlr4/node_modules doesn't exist or is not a directory
+      /home/kathy/tmp/helper/node_modules/node_modules doesn't exist or is not a directory
+      looking for modules in /home/kathy/tmp/helper/node_modules
+        single file module
+          using description file: /home/kathy/tmp/helper/package.json (relative path: ./node_modules/fs)
+            no extension
+              /home/kathy/tmp/helper/node_modules/fs doesn't exist
+            .web.mjs
+              /home/kathy/tmp/helper/node_modules/fs.web.mjs doesn't exist
+            .mjs
+              /home/kathy/tmp/helper/node_modules/fs.mjs doesn't exist
+            .web.js
+              /home/kathy/tmp/helper/node_modules/fs.web.js doesn't exist
+            .js
+              /home/kathy/tmp/helper/node_modules/fs.js doesn't exist
+            .json
+              /home/kathy/tmp/helper/node_modules/fs.json doesn't exist
+            .web.jsx
+              /home/kathy/tmp/helper/node_modules/fs.web.jsx doesn't exist
+            .jsx
+              /home/kathy/tmp/helper/node_modules/fs.jsx doesn't exist
+        /home/kathy/tmp/helper/node_modules/fs doesn't exist
+      /home/kathy/tmp/node_modules doesn't exist or is not a directory
+      looking for modules in /home/kathy/node_modules
+        single file module
+          using description file: /home/kathy/package.json (relative path: ./node_modules/fs)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs doesn't exist
+            .web.mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.web.mjs doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.mjs doesn't exist
+            .web.js
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.web.js doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.js doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.json doesn't exist
+            .web.jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.web.jsx doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              /home/kathy/node_modules/fs.jsx doesn't exist
+        /home/kathy/node_modules/fs doesn't exist
+      /home/node_modules doesn't exist or is not a directory
+      /node_modules doesn't exist or is not a directory
+      looking for modules in /home/kathy/tmp/helper/node_modules
+        single file module
+          using description file: /home/kathy/tmp/helper/package.json (relative path: ./node_modules/fs)
+            no extension
+              /home/kathy/tmp/helper/node_modules/fs doesn't exist
+            .web.mjs
+              /home/kathy/tmp/helper/node_modules/fs.web.mjs doesn't exist
+            .mjs
+              /home/kathy/tmp/helper/node_modules/fs.mjs doesn't exist
+            .web.js
+              /home/kathy/tmp/helper/node_modules/fs.web.js doesn't exist
+            .js
+              /home/kathy/tmp/helper/node_modules/fs.js doesn't exist
+            .json
+              /home/kathy/tmp/helper/node_modules/fs.json doesn't exist
+            .web.jsx
+              /home/kathy/tmp/helper/node_modules/fs.web.jsx doesn't exist
+            .jsx
+              /home/kathy/tmp/helper/node_modules/fs.jsx doesn't exist
+        /home/kathy/tmp/helper/node_modules/fs doesn't exist
+ @ ./node_modules/antlr4/src/antlr4/index.js 15:0-44
+ @ ./src/boolean-functions.js 6:0-28
+ @ ./src/index.js 9:0-24 275:29-32
+
+webpack 5.69.1 compiled with 2 errors in 733 ms
