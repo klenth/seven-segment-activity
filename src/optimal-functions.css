@@ -1,0 +1,32 @@
+.digit-displays {
+    text-align: center;
+}
+
+.optimal-functions {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.optimal-functions tr > * {
+    text-align: center;
+}
+
+.optimal-functions tbody tr:nth-child(2n+1):not(.total-transistors) > * {
+    background-color: #00B5E220;
+}
+
+.optimal-functions tr td input {
+    border: none;
+    background-color: transparent;
+    width: 30em;
+    text-align: center;
+}
+
+.optimal-functions tbody tr.invalid td.expression {
+    outline: 1px solid red;
+}
+
+.optimal-functions tr.total-transistors td.transistors {
+    font-weight: bold;
+    border-top: 3px solid #00B5E2;
+}

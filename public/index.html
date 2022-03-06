@@ -59,11 +59,35 @@
         <div class="problem">
             <div class="title">Boolean functions</div>
 
+            <p>
+                Now that you have a truth table for all seven segments, write Boolean functions to control each of the seven segments. These correspond to what circuitry would be connected to each of the seven-segment display’s seven inputs, and each can use the variables w, x, y, and z, being the four bits of the digit to display.
+            </p>
+
+            <p>
+                For each of the seven segments, decide as a team whether it would be better to use SoP <code>_ _ _ + _ _ _ + _ _ _</code> or PoS <code>(_ + _ + _)(_ + _ + _)(_ + _ + _)</code> form, then write a function implementing the truth table you filled in above. Don’t worry about Karnaugh mapping it just yet; that’s the next step!
+            </p>
+
             <div id="react-boolean-functions"></div>
+
+            <div class="total points">20 points</div>
+        </div>
+
+        <div class="problem">
+            <div class="title">Optimization</div>
+
+            <p>
+                Use Karnaugh maps to derive <em>optimal</em> SoP or PoS functions, using as few logic gates (and hence transistors) as possible. Fill in the table below, which will show you how many transistors are used in total by your functions.
+            </p>
+
+            <p>
+                Since we don’t care what the seven-segment display would do for inputs greater than 9, you can (and should!) treat the six rows of the truth table corresponding to 10–16 as “don’t-care” values, allowed to be either 0 or 1, which can allow you to produce better (simpler) functions.
+            </p>
+
+            <div id="react-optimal-functions"></div>
+
+            <div class="total points">20 points</div>
         </div>
     </div>
-
-
 </main>
 
 <script src="homework.js"></script>

@@ -11,7 +11,7 @@ export default class DigitDisplay extends React.Component {
                 <div className='digit'>
                     {this.props.value} <br/>
                     <div className='binary'>
-                        abcd
+                        wxyz
                         <br />
                         {this.binary(this.props.value)}
                     </div>
@@ -34,13 +34,21 @@ export default class DigitDisplay extends React.Component {
               b = (n >> 2) & 1,
               c = (n >> 1) & 1,
               d = n & 1;
+        const varNames = this.props.variableNames;
+
+        if (varNames === undefined)
+            throw "If props.exprs is given, then props.variableNames must be too!";
+
+        if (varNames.length !== 4)
+            throw "props.variableNames be an array of exactly four elements!";
+
         try {
-            return expr.evaluate({
-                a: a,
-                b: b,
-                c: c,
-                d: d,
-            });
+            const vars = {};
+            vars[varNames[0]] = a;
+            vars[varNames[1]] = b;
+            vars[varNames[2]] = c;
+            vars[varNames[3]] = d;
+            return expr.evaluate(vars);
         } catch {
             return null;
         }

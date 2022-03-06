@@ -21,7 +21,7 @@ class AstNode {
     }
 
     children() {
-        return []
+        return [];
     }
 
     getVars(node, vars) {
@@ -65,6 +65,12 @@ class AstNode {
 
     equals(node) {
         return false;
+    }
+
+    preorder(f) {
+        f(this);
+        for (let child of this.children())
+            child.preorder(f);
     }
 }
 

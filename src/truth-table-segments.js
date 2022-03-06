@@ -26,6 +26,7 @@ export default class TruthTableSegments extends React.Component {
                     <DigitDisplay value={2} bits={this.state.slots[2]} />
                     <DigitDisplay value={3} bits={this.state.slots[3]} />
                     <DigitDisplay value={4} bits={this.state.slots[4]} />
+                    <br/>
                     <DigitDisplay value={5} bits={this.state.slots[5]} />
                     <DigitDisplay value={6} bits={this.state.slots[6]} />
                     <DigitDisplay value={7} bits={this.state.slots[7]} />

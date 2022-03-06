@@ -1,6 +1,7 @@
 .truth-table {
     font-family: monospace;
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 .truth-table tr > * {

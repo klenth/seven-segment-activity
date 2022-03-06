@@ -1,3 +1,27 @@
 .digit-displays {
     text-align: center;
 }
+
+.boolean-functions {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.boolean-functions tr > * {
+    text-align: center;
+}
+
+.boolean-functions tbody tr:nth-child(2n) > * {
+    background-color: #00B5E220;
+}
+
+.boolean-functions tr td input {
+    border: none;
+    background-color: transparent;
+    width: 30em;
+    text-align: center;
+}
+
+.boolean-functions tbody tr.invalid td.expression {
+    outline: 1px solid red;
+}

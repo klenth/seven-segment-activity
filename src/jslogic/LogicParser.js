@@ -7,47 +7,39 @@ import Ast from "./ast";
 
 
 const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
-    "\u5964\u0003\rB\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
+    "\u5964\u0003\u000b5\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
     "\t\u0004\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003\u0018\n",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003\u001d\n\u0003",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003",
-    "%\n\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003*\n\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0007\u00037",
-    "\n\u0003\f\u0003\u000e\u0003:\u000b\u0003\u0003\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0005\u0004@\n\u0004\u0003\u0004\u0002\u0003\u0004",
-    "\u0005\u0002\u0004\u0006\u0002\u0002\u0002H\u0002\b\u0003\u0002\u0002",
-    "\u0002\u0004$\u0003\u0002\u0002\u0002\u0006?\u0003\u0002\u0002\u0002",
-    "\b\t\b\u0002\u0001\u0002\t\n\u0005\u0004\u0003\u0002\n\u000b\u0007\u0002",
-    "\u0002\u0003\u000b\f\b\u0002\u0001\u0002\f\u0003\u0003\u0002\u0002\u0002",
-    "\r\u000e\b\u0003\u0001\u0002\u000e\u000f\u0007\f\u0002\u0002\u000f%",
-    "\b\u0003\u0001\u0002\u0010\u0011\u0007\u0003\u0002\u0002\u0011\u0012",
-    "\u0005\u0004\u0003\u0002\u0012\u0013\u0007\u0004\u0002\u0002\u0013\u0014",
-    "\b\u0003\u0001\u0002\u0014%\u0003\u0002\u0002\u0002\u0015\u0016\u0007",
-    "\u0006\u0002\u0002\u0016\u0017\u0005\u0004\u0003\t\u0017\u0018\b\u0003",
-    "\u0001\u0002\u0018%\u0003\u0002\u0002\u0002\u0019\u001a\u0007\u000b",
-    "\u0002\u0002\u001a\u001b\u0007\u0005\u0002\u0002\u001b\u001c\u0005\u0004",
-    "\u0003\u0005\u001c\u001d\b\u0003\u0001\u0002\u001d%\u0003\u0002\u0002",
-    "\u0002\u001e\u001f\u0007\u0005\u0002\u0002\u001f \u0005\u0004\u0003",
-    "\u0004 !\b\u0003\u0001\u0002!%\u0003\u0002\u0002\u0002\"#\u0007\u000b",
-    "\u0002\u0002#%\b\u0003\u0001\u0002$\r\u0003\u0002\u0002\u0002$\u0010",
-    "\u0003\u0002\u0002\u0002$\u0015\u0003\u0002\u0002\u0002$\u0019\u0003",
-    "\u0002\u0002\u0002$\u001e\u0003\u0002\u0002\u0002$\"\u0003\u0002\u0002",
-    "\u0002%8\u0003\u0002\u0002\u0002&)\f\u0007\u0002\u0002\'*\u0007\b\u0002",
-    "\u0002(*\u0003\u0002\u0002\u0002)\'\u0003\u0002\u0002\u0002)(\u0003",
-    "\u0002\u0002\u0002*+\u0003\u0002\u0002\u0002+,\u0005\u0004\u0003\b,",
-    "-\b\u0003\u0001\u0002-7\u0003\u0002\u0002\u0002./\f\u0006\u0002\u0002",
-    "/0\u0005\u0006\u0004\u000201\u0005\u0004\u0003\u000712\b\u0003\u0001",
-    "\u000227\u0003\u0002\u0002\u000234\f\b\u0002\u000245\u0007\u0007\u0002",
-    "\u000257\b\u0003\u0001\u00026&\u0003\u0002\u0002\u00026.\u0003\u0002",
-    "\u0002\u000263\u0003\u0002\u0002\u00027:\u0003\u0002\u0002\u000286\u0003",
-    "\u0002\u0002\u000289\u0003\u0002\u0002\u00029\u0005\u0003\u0002\u0002",
-    "\u0002:8\u0003\u0002\u0002\u0002;<\u0007\t\u0002\u0002<@\b\u0004\u0001",
-    "\u0002=>\u0007\n\u0002\u0002>@\b\u0004\u0001\u0002?;\u0003\u0002\u0002",
-    "\u0002?=\u0003\u0002\u0002\u0002@\u0007\u0003\u0002\u0002\u0002\u0007",
-    "$)68?"].join("");
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0007\u0003",
+    "*\n\u0003\f\u0003\u000e\u0003-\u000b\u0003\u0003\u0004\u0003\u0004\u0003",
+    "\u0004\u0003\u0004\u0005\u00043\n\u0004\u0003\u0004\u0002\u0003\u0004",
+    "\u0005\u0002\u0004\u0006\u0002\u0002\u00028\u0002\b\u0003\u0002\u0002",
+    "\u0002\u0004\u0017\u0003\u0002\u0002\u0002\u00062\u0003\u0002\u0002",
+    "\u0002\b\t\b\u0002\u0001\u0002\t\n\u0005\u0004\u0003\u0002\n\u000b\u0007",
+    "\u0002\u0002\u0003\u000b\f\b\u0002\u0001\u0002\f\u0003\u0003\u0002\u0002",
+    "\u0002\r\u000e\b\u0003\u0001\u0002\u000e\u000f\u0007\n\u0002\u0002\u000f",
+    "\u0018\b\u0003\u0001\u0002\u0010\u0011\u0007\u0003\u0002\u0002\u0011",
+    "\u0012\u0005\u0004\u0003\u0002\u0012\u0013\u0007\u0004\u0002\u0002\u0013",
+    "\u0014\b\u0003\u0001\u0002\u0014\u0018\u0003\u0002\u0002\u0002\u0015",
+    "\u0016\u0007\t\u0002\u0002\u0016\u0018\b\u0003\u0001\u0002\u0017\r\u0003",
+    "\u0002\u0002\u0002\u0017\u0010\u0003\u0002\u0002\u0002\u0017\u0015\u0003",
+    "\u0002\u0002\u0002\u0018+\u0003\u0002\u0002\u0002\u0019\u001c\f\u0005",
+    "\u0002\u0002\u001a\u001d\u0007\u0006\u0002\u0002\u001b\u001d\u0003\u0002",
+    "\u0002\u0002\u001c\u001a\u0003\u0002\u0002\u0002\u001c\u001b\u0003\u0002",
+    "\u0002\u0002\u001d\u001e\u0003\u0002\u0002\u0002\u001e\u001f\u0005\u0004",
+    "\u0003\u0006\u001f \b\u0003\u0001\u0002 *\u0003\u0002\u0002\u0002!\"",
+    "\f\u0004\u0002\u0002\"#\u0005\u0006\u0004\u0002#$\u0005\u0004\u0003",
+    "\u0005$%\b\u0003\u0001\u0002%*\u0003\u0002\u0002\u0002&\'\f\u0006\u0002",
+    "\u0002\'(\u0007\u0005\u0002\u0002(*\b\u0003\u0001\u0002)\u0019\u0003",
+    "\u0002\u0002\u0002)!\u0003\u0002\u0002\u0002)&\u0003\u0002\u0002\u0002",
+    "*-\u0003\u0002\u0002\u0002+)\u0003\u0002\u0002\u0002+,\u0003\u0002\u0002",
+    "\u0002,\u0005\u0003\u0002\u0002\u0002-+\u0003\u0002\u0002\u0002./\u0007",
+    "\u0007\u0002\u0002/3\b\u0004\u0001\u000201\u0007\b\u0002\u000213\b\u0004",
+    "\u0001\u00022.\u0003\u0002\u0002\u000220\u0003\u0002\u0002\u00023\u0007",
+    "\u0003\u0002\u0002\u0002\u0007\u0017\u001c)+2"].join("");
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -59,9 +51,9 @@ const sharedContextCache = new antlr4.PredictionContextCache();
 export default class LogicParser extends antlr4.Parser {
 
     static grammarFileName = "Logic.g4";
-    static literalNames = [ null, "'('", "')'", "':'", null, "'''" ];
-    static symbolicNames = [ null, null, null, null, "NOT", "POSTNOT", "AND", 
-                             "OR", "XOR", "ID", "BIT", "WS" ];
+    static literalNames = [ null, "'('", "')'", "'''", null, "'+'", "'^'" ];
+    static symbolicNames = [ null, null, null, "POSTNOT", "AND", "OR", "XOR", 
+                             "ID", "BIT", "WS" ];
     static ruleNames = [ "func", "bool", "orOp" ];
 
     constructor(input) {
@@ -88,11 +80,11 @@ export default class LogicParser extends antlr4.Parser {
     bool_sempred(localctx, predIndex) {
     	switch(predIndex) {
     		case 0:
-    			return this.precpred(this._ctx, 5);
+    			return this.precpred(this._ctx, 3);
     		case 1:
-    			return this.precpred(this._ctx, 4);
+    			return this.precpred(this._ctx, 2);
     		case 2:
-    			return this.precpred(this._ctx, 6);
+    			return this.precpred(this._ctx, 4);
     		default:
     			throw "No predicate with index:" + predIndex;
     	}
@@ -139,17 +131,15 @@ export default class LogicParser extends antlr4.Parser {
 	    this.enterRecursionRule(localctx, 2, LogicParser.RULE_bool, _p);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 34;
+	        this.state = 21;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
-	        switch(la_) {
-	        case 1:
+	        switch(this._input.LA(1)) {
+	        case LogicParser.BIT:
 	            this.state = 12;
 	            localctx._BIT = this.match(LogicParser.BIT);
 	             localctx.n =  Ast.getNode(new Ast.BitNode(!!((localctx._BIT===null ? null : localctx._BIT.text) - 0))); 
 	            break;
-
-	        case 2:
+	        case LogicParser.T__0:
 	            this.state = 14;
 	            this.match(LogicParser.T__0);
 	            this.state = 15;
@@ -158,42 +148,16 @@ export default class LogicParser extends antlr4.Parser {
 	            this.match(LogicParser.T__1);
 	             localctx.n =  localctx._bool.n; 
 	            break;
-
-	        case 3:
+	        case LogicParser.ID:
 	            this.state = 19;
-	            this.match(LogicParser.NOT);
-	            this.state = 20;
-	            localctx._bool = this.bool(7);
-	             localctx.n =  Ast.getNode(new Ast.NotNode(localctx._bool.n)); 
-	            break;
-
-	        case 4:
-	            this.state = 23;
-	            localctx._ID = this.match(LogicParser.ID);
-	            this.state = 24;
-	            this.match(LogicParser.T__2);
-	            this.state = 25;
-	            localctx._bool = this.bool(3);
-	             localctx.n =  localctx._bool.n; localctx.n.display = true;; localctx.n.name = (localctx._ID===null ? null : localctx._ID.text);; 
-	            break;
-
-	        case 5:
-	            this.state = 28;
-	            this.match(LogicParser.T__2);
-	            this.state = 29;
-	            localctx._bool = this.bool(2);
-	             localctx.n =  localctx._bool.n; localctx.n.display = true;; 
-	            break;
-
-	        case 6:
-	            this.state = 32;
 	            localctx._ID = this.match(LogicParser.ID);
 	             localctx.n =  Ast.getNode(new Ast.VarNode((localctx._ID===null ? null : localctx._ID.text))); 
 	            break;
-
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 54;
+	        this.state = 41;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,3,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -202,7 +166,7 @@ export default class LogicParser extends antlr4.Parser {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 52;
+	                this.state = 39;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
 	                switch(la_) {
@@ -210,28 +174,26 @@ export default class LogicParser extends antlr4.Parser {
 	                    localctx = new BoolContext(this, _parentctx, _parentState);
 	                    localctx.l = _prevctx;
 	                    this.pushNewRecursionContext(localctx, _startState, LogicParser.RULE_bool);
-	                    this.state = 36;
-	                    if (!( this.precpred(this._ctx, 5))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+	                    this.state = 23;
+	                    if (!( this.precpred(this._ctx, 3))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
 	                    }
-	                    this.state = 39;
+	                    this.state = 26;
 	                    this._errHandler.sync(this);
 	                    switch(this._input.LA(1)) {
 	                    case LogicParser.AND:
-	                        this.state = 37;
+	                        this.state = 24;
 	                        this.match(LogicParser.AND);
 	                        break;
 	                    case LogicParser.T__0:
-	                    case LogicParser.T__2:
-	                    case LogicParser.NOT:
 	                    case LogicParser.ID:
 	                    case LogicParser.BIT:
 	                        break;
 	                    default:
 	                        throw new antlr4.error.NoViableAltException(this);
 	                    }
-	                    this.state = 41;
-	                    localctx.r = localctx._bool = this.bool(6);
+	                    this.state = 28;
+	                    localctx.r = localctx._bool = this.bool(4);
 	                     localctx.n =  Ast.getNode(new Ast.AndNode(localctx.l.n, localctx.r.n)); 
 	                    break;
 
@@ -239,14 +201,14 @@ export default class LogicParser extends antlr4.Parser {
 	                    localctx = new BoolContext(this, _parentctx, _parentState);
 	                    localctx.l = _prevctx;
 	                    this.pushNewRecursionContext(localctx, _startState, LogicParser.RULE_bool);
-	                    this.state = 44;
-	                    if (!( this.precpred(this._ctx, 4))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
+	                    this.state = 31;
+	                    if (!( this.precpred(this._ctx, 2))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
 	                    }
-	                    this.state = 45;
+	                    this.state = 32;
 	                    localctx.op = this.orOp();
-	                    this.state = 46;
-	                    localctx.r = localctx._bool = this.bool(5);
+	                    this.state = 33;
+	                    localctx.r = localctx._bool = this.bool(3);
 	                     localctx.n =  Ast.getNode((localctx.op.op === "or") ? new Ast.OrNode(localctx.l.n, localctx.r.n) : new Ast.XorNode(localctx.l.n, localctx.r.n)); 
 	                    break;
 
@@ -254,18 +216,18 @@ export default class LogicParser extends antlr4.Parser {
 	                    localctx = new BoolContext(this, _parentctx, _parentState);
 	                    localctx.b = _prevctx;
 	                    this.pushNewRecursionContext(localctx, _startState, LogicParser.RULE_bool);
-	                    this.state = 49;
-	                    if (!( this.precpred(this._ctx, 6))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
+	                    this.state = 36;
+	                    if (!( this.precpred(this._ctx, 4))) {
+	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
 	                    }
-	                    this.state = 50;
+	                    this.state = 37;
 	                    this.match(LogicParser.POSTNOT);
 	                     localctx.n =  Ast.getNode(new Ast.NotNode(localctx.b.n)); 
 	                    break;
 
 	                } 
 	            }
-	            this.state = 56;
+	            this.state = 43;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        }
@@ -290,18 +252,18 @@ export default class LogicParser extends antlr4.Parser {
 	    let localctx = new OrOpContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, LogicParser.RULE_orOp);
 	    try {
-	        this.state = 61;
+	        this.state = 48;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case LogicParser.OR:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 57;
+	            this.state = 44;
 	            this.match(LogicParser.OR);
 	             localctx.op =  "or"; 
 	            break;
 	        case LogicParser.XOR:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 59;
+	            this.state = 46;
 	            this.match(LogicParser.XOR);
 	             localctx.op =  "xor"; 
 	            break;
@@ -328,15 +290,13 @@ export default class LogicParser extends antlr4.Parser {
 LogicParser.EOF = antlr4.Token.EOF;
 LogicParser.T__0 = 1;
 LogicParser.T__1 = 2;
-LogicParser.T__2 = 3;
-LogicParser.NOT = 4;
-LogicParser.POSTNOT = 5;
-LogicParser.AND = 6;
-LogicParser.OR = 7;
-LogicParser.XOR = 8;
-LogicParser.ID = 9;
-LogicParser.BIT = 10;
-LogicParser.WS = 11;
+LogicParser.POSTNOT = 3;
+LogicParser.AND = 4;
+LogicParser.OR = 5;
+LogicParser.XOR = 6;
+LogicParser.ID = 7;
+LogicParser.BIT = 8;
+LogicParser.WS = 9;
 
 LogicParser.RULE_func = 0;
 LogicParser.RULE_bool = 1;
@@ -418,10 +378,6 @@ class BoolContext extends antlr4.ParserRuleContext {
 	    } else {
 	        return this.getTypedRuleContext(BoolContext,i);
 	    }
-	};
-
-	NOT() {
-	    return this.getToken(LogicParser.NOT, 0);
 	};
 
 	ID() {

@@ -3,16 +3,17 @@ import antlr4 from 'antlr4';
 import LogicLexer from './jslogic/LogicLexer';
 import LogicParser from './jslogic/LogicParser';
 import DigitDisplay from './digit-display';
-import './boolean-functions.css';
+import AST from './jslogic/ast';
+import './optimal-functions.css';
 
-class BooleanFunctions extends React.Component {
+class OptimalFunctions extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             exprs:  Array(7).fill(null),
         };
     }
-    
+
     render() {
         const varNames = ['w', 'x', 'y', 'z'];
         const segmentNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
@@ -22,6 +23,9 @@ class BooleanFunctions extends React.Component {
             if (expr === undefined)
                 rowClasses[i] = 'invalid';
         });
+
+        const transistorCounts = [...Array(7).keys()].map(i => this.transistorsUsed(this.state.exprs[i]));
+        const totalTransistorCount = transistorCounts.reduce((a, b) => a + b, 0);
 
         const rows = Array(7).fill(0).map((_, i) => (
             <tr
@@ -34,6 +38,9 @@ class BooleanFunctions extends React.Component {
                         type={'text'}
                         onChange={(e) => this.handleChange(e.target, i)}
                     />
+                </td>
+                <td className={'transistors'}>
+                    {transistorCounts[i]}
                 </td>
             </tr>
         ));
@@ -52,28 +59,36 @@ class BooleanFunctions extends React.Component {
                 <DigitDisplay value={8} exprs={this.state.exprs} variableNames={varNames} />
                 <DigitDisplay value={9} exprs={this.state.exprs} variableNames={varNames} />
             </div>
-            
+
             <p>
                 Write Boolean expressions for each segment so that they correctly show each digit above.
             </p>
-            
-            <table className={'boolean-functions'}>
+
+            <table className={'optimal-functions'}>
                 <thead>
-                    <tr>
-                        <th scope='col'>Segment</th>
-                        <th scope='col'>Function</th>
-                    </tr>
+                <tr>
+                    <th scope='col'>Segment</th>
+                    <th scope='col'>Function</th>
+                    <th scope='col'>Transistors needed</th>
+                </tr>
                 </thead>
                 <tbody>
                     {rows}
+                    <tr className={'total-transistors'}>
+                        <td/>
+                        <td/>
+                        <td className={'transistors'}>
+                            Total: {totalTransistorCount}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </>);
     }
-    
+
     handleChange(box, index) {
         const text = box.value;
-        
+
         let newExpr = null;
 
         let valid = true;
@@ -125,6 +140,56 @@ class BooleanFunctions extends React.Component {
             exprs: newExprs,
         });
     }
+
+    transistorsUsed(expr) {
+        if (!expr)
+            return null;
+
+        const invertedVariables = new Set();
+        let transistorCount = 0;
+
+        let countBinaryOp;
+
+        let count = node => {
+            if (node instanceof AST.NotNode) {
+                if (node.child instanceof AST.VarNode)
+                    invertedVariables.add(node.child.varName);
+                else if (node.child instanceof AST.AndNode || node.child instanceof AST.OrNode || node.child instanceof AST.XorNode) {
+                    const numArgs = 2 + countBinaryOp(node.child.op, node.child.left) + countBinaryOp(node.child.right);
+                    if (node instanceof AST.XorNode)
+                        transistorCount += 3 * numArgs - 3;
+                    else
+                        transistorCount += numArgs;
+                } else {
+                    ++transistorCount;
+                    count(node.child);
+                }
+            } else if (node instanceof AST.AndNode || node instanceof AST.OrNode || node instanceof AST.XorNode) {
+                const numArgs = 2 + countBinaryOp(node.op, node.left) + countBinaryOp(node.op, node.right);
+                if (node instanceof AST.XorNode)
+                    transistorCount += 3 * numArgs - 1;
+                else
+                    transistorCount += 2 * numArgs - 1;
+            }
+        };
+
+        countBinaryOp = (op, node) => {
+            if ((node instanceof AST.AndNode || node instanceof AST.OrNode || node instanceof AST.XorNode) && node.op === op) {
+                return 1 + countBinaryOp(op, node.left) + countBinaryOp(op, node.right);
+            } else {
+                count(node);
+                return 0;
+            }
+        };
+
+        count(expr);
+
+        console.log(invertedVariables);
+
+        transistorCount += invertedVariables.size;
+
+        return transistorCount;
+    }
 }
 
-export default BooleanFunctions;
+export default OptimalFunctions;

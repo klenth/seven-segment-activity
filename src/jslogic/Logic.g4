@@ -14,12 +14,9 @@ bool
 returns [Node n]
     : BIT                           { $n = Ast.getNode(new Ast.BitNode(!!($BIT.text - 0)));; }
     | '(' bool ')'                  { $n = $bool.n;; }
-    | NOT bool                      { $n = Ast.getNode(new Ast.NotNode($bool.n));; }
     | b=bool POSTNOT                { $n = Ast.getNode(new Ast.NotNode($b.n));; }
     | l=bool (AND | ) r=bool        { $n = Ast.getNode(new Ast.AndNode($l.n, $r.n));; }
     | l=bool op=orOp r=bool         { $n = Ast.getNode(($op.op === "or") ? new Ast.OrNode($l.n, $r.n) : new Ast.XorNode($l.n, $r.n));; }
-    | ID ':' bool                   { $n = $bool.n;; $n.display = true;; $n.name = $ID.text;; }
-    | ':' bool                      { $n = $bool.n;; $n.display = true;; }
     | ID                            { $n = Ast.getNode(new Ast.VarNode($ID.text));; }
     ;
 
@@ -29,43 +26,21 @@ returns [String op]
     | XOR                           { $op = "xor";; }
     ;
 
-NOT
-    : 'not'
-    | 'NOT'
-    | '¬'
-    | '!'
-    | '~'
-    ;
-
 POSTNOT
     : '\''
     ;
     
 AND
-    : 'and'
-    | 'AND'
-    | '&'
-    | '&&'
-    | '∧'
-    | '*'
+    : '*'
     | '•'
     ;
 
 OR
-    : 'or'
-    | 'OR'
-    | '|'
-    | '||'
-    | '∨'
-    | '+'
+    : '+'
     ;
 
 XOR
-    : 'xor'
-    | 'XOR'
-    | '^'
-    | '⊕'
-    | '⊻'
+    : '^'
     ;
 
 ID
