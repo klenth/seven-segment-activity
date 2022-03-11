@@ -4,7 +4,9 @@ import './index.css';
 import TruthTableSegments from './truth-table-segments';
 import BooleanFunctions from './boolean-functions';
 import OptimalFunctions from "./optimal-functions";
+import App from './app';
 
+/*
 render(
     <TruthTableSegments
         inputs={['w', 'x', 'y', 'z']}
@@ -24,3 +26,9 @@ render(
     document.getElementById('react-optimal-functions')
 );
 
+*/
+
+render(
+    <App/>,
+    document.getElementById('root')
+);
