@@ -51,7 +51,7 @@ const sharedContextCache = new antlr4.PredictionContextCache();
 export default class LogicParser extends antlr4.Parser {
 
     static grammarFileName = "Logic.g4";
-    static literalNames = [ null, "'('", "')'", "'''", null, "'+'", "'^'" ];
+    static literalNames = [ null, "'('", "')'", null, null, "'+'", "'^'" ];
     static symbolicNames = [ null, null, null, "POSTNOT", "AND", "OR", "XOR", 
                              "ID", "BIT", "WS" ];
     static ruleNames = [ "func", "bool", "orOp" ];

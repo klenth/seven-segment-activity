@@ -11,8 +11,27 @@
     text-align: center;
 }
 
-.optimal-functions tbody tr:nth-child(2n+1):not(.total-transistors) > * {
+.optimal-functions tbody tr:nth-child(4n+1):not(.total-transistors) > *, .optimal-functions tbody tr:nth-child(4n+2):not(.total-transistors) > * {
     background-color: #00B5E220;
+}
+
+.optimal-functions tbody tr:nth-child(2n+1) > :nth-child(2), .optimal-functions tbody tr:nth-child(2n) > :nth-child(1) {
+    font-style: italic;
+    text-align: right;
+}
+
+.optimal-functions tbody tr:nth-child(2n+1):not(:first-child) > * {
+    padding-top: 12px;
+}
+
+.optimal-functions tbody tr:nth-child(2n):not(:last-child) > * {
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+.optimal-functions tbody tr td.expression {
+    font-family: monospace;
+    font-size: 1.1rem;
 }
 
 .optimal-functions tr td input {
@@ -20,13 +39,27 @@
     background-color: transparent;
     width: 30em;
     text-align: center;
+    font: inherit;
+    border-bottom: 2px dotted var(--color-for-chrome);
 }
 
-.optimal-functions tbody tr.invalid td.expression {
+.optimal-functions tbody tr.invalid td.optimal.expression input {
     outline: 1px solid red;
 }
 
-.optimal-functions tr.total-transistors td.transistors {
+.optimal-functions tr.first.total-transistors td {
+    border-top: 2px solid #00B5E2;
+}
+
+.optimal-functions tr.total-transistors td.label {
     font-weight: bold;
-    border-top: 3px solid #00B5E2;
+    text-align: right;
+}
+
+.optimal-functions tr.total-transistors td {
+    font-size: 1.2rem;
+}
+
+.optimal-functions tbody tr td input:focus, .optimal-functions input:focus-visible {
+    outline: none;
 }

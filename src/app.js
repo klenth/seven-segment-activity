@@ -5,8 +5,20 @@ import SevenSegmentDisplay from "./seven-segment-display";
 import TruthTableSegments from "./truth-table-segments";
 import BooleanFunctions from "./boolean-functions";
 import OptimalFunctions from "./optimal-functions";
+import antlr4 from "antlr4";
+import LogicLexer from "./jslogic/LogicLexer";
+import LogicParser from "./jslogic/LogicParser";
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            exprs: Array(7).fill(null),
+            optimizedExprs: Array(7).fill(null),
+        };
+    }
+
     componentDidMount() {
         const nav_ul = document.querySelector("nav ul");
         // Watch document scrolls and highlight the link to the current
@@ -149,7 +161,9 @@ export default class App extends React.Component {
                             Don’t worry about Karnaugh mapping it just yet; that’s the next step!
                         </p>
 
-                        <BooleanFunctions/>
+                        <BooleanFunctions
+                            exprs={this.state.exprs}
+                            handleChange={(box, i) => this.handleBooleanFunctionChange(this.state.exprs, box, i)}/>
 
                         <div className='total points'>20 points</div>
                     </div>
@@ -166,12 +180,78 @@ export default class App extends React.Component {
                             Since we don’t care what the seven-segment display would do for inputs greater than 9, you can (and should!) treat the six rows of the truth table corresponding to 10–16 as “don’t-care” values, allowed to be either 0 or 1, which can allow you to produce better (simpler) functions.
                         </p>
 
-                        <OptimalFunctions/>
+                        <OptimalFunctions
+                            exprs={this.state.optimizedExprs}
+                            originalExprs={this.state.exprs}
+                            handleChange={(box, i) => this.handleBooleanFunctionChange(this.state.optimizedExprs, box, i)}
+                        />
 
                         <div className='total points'>10 points</div>
                     </div>
                 </div>
             </>
         );
+    }
+
+    handleBooleanFunctionChange(exprs, box, index) {
+        const text = box.value;
+
+        let newExpr = null;
+
+        let valid = true;
+
+        if (text) {
+            try {
+                const chars = new antlr4.InputStream(text);
+                const lexer = new LogicLexer(chars);
+                const tokens = new antlr4.CommonTokenStream(lexer);
+                const parser = new LogicParser(tokens);
+
+                const errorListener = {
+                    syntaxError: (recognizer, token, line, column, message, error) => {
+                        valid = false;
+                    },
+                    reportAmbiguity: (recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) => {
+                        valid = false;
+                    },
+                    reportAttemptingFullContext: (recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) => {
+                        valid = false;
+                    },
+                    reportContextSensitivity: (recognizer, dfa, startIndex, stopIndex, prediction, configs) => {
+                        valid = false;
+                    },
+                };
+
+                lexer.removeErrorListeners();
+                parser.removeErrorListeners();
+                lexer.addErrorListener(errorListener);
+                parser.addErrorListener(errorListener);
+
+                newExpr = parser.func().n;
+                const vars = newExpr.getVars();
+                for (let v of vars) {
+                    if (v !== 'w' && v !== 'x' && v !== 'y' && v !== 'z')
+                        valid = false;
+                }
+            } catch {
+                valid = false;
+            }
+        }
+
+        if (!valid)
+            newExpr = undefined;
+        else if (newExpr)
+            newExpr.text = text;
+
+        const newExprs = exprs.slice();
+        newExprs[index] = newExpr;
+        const newState = Object.assign({}, this.state);
+
+        if (exprs === this.state.exprs)
+            newState.exprs = newExprs;
+        else if (exprs === this.state.optimizedExprs)
+            newState.optimizedExprs = newExprs;
+
+        this.setState(newState);
     }
 }

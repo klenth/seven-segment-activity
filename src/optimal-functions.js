@@ -7,57 +7,68 @@ import AST from './jslogic/ast';
 import './optimal-functions.css';
 
 class OptimalFunctions extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            exprs:  Array(7).fill(null),
-        };
-    }
-
     render() {
         const varNames = ['w', 'x', 'y', 'z'];
         const segmentNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 
         const rowClasses = Array(7).fill(null);
-        this.state.exprs.forEach((expr, i) => {
+        this.props.exprs.forEach((expr, i) => {
             if (expr === undefined)
                 rowClasses[i] = 'invalid';
         });
 
-        const transistorCounts = [...Array(7).keys()].map(i => this.transistorsUsed(this.state.exprs[i]));
+        const originalTransistorCounts = [...Array(7).keys()].map(i => this.transistorsUsed(this.props.originalExprs[i]));
+        const transistorCounts = [...Array(7).keys()].map(i => this.transistorsUsed(this.props.exprs[i]));
+        const originalTotalTransistorCount = originalTransistorCounts.reduce((a, b) => a + b, 0);
         const totalTransistorCount = transistorCounts.reduce((a, b) => a + b, 0);
 
         const rows = Array(7).fill(0).map((_, i) => (
-            <tr
-                key={i}
-                className={rowClasses[i]}
-            >
-                <td>{segmentNames[i]}</td>
-                <td className={'expression'}>
-                    <input
-                        type={'text'}
-                        onChange={(e) => this.handleChange(e.target, i)}
-                    />
-                </td>
-                <td className={'transistors'}>
-                    {transistorCounts[i]}
-                </td>
-            </tr>
-        ));
+            [
+                (<tr
+                    key={2 * i}
+                    className={rowClasses[i]}
+                >
+                    <td rowSpan={2}>{segmentNames[i]}</td>
+                    <td>(original)</td>
+                    <td className={'original expression'}>
+                        {this.props.originalExprs[i] && this.props.originalExprs[i].text}
+                    </td>
+                    <td className={'transistors'}>
+                        {originalTransistorCounts[i]}
+                    </td>
+                </tr>),
+
+                (<tr
+                    key={2 * i + 1}
+                    className={rowClasses[i]}
+                >
+                    <td>(optimized)</td>
+                    <td className={'optimal expression'}>
+                        <input
+                            type={'text'}
+                            onChange={(e) => this.props.handleChange(e.target, i)}
+                        />
+                    </td>
+                    <td className={'transistors'}>
+                        {transistorCounts[i]}
+                    </td>
+                </tr>),
+            ]
+        )).flat();
 
         return (<>
             <div className='digit-displays'>
-                <DigitDisplay value={0} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={1} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={2} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={3} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={4} exprs={this.state.exprs} variableNames={varNames} />
+                <DigitDisplay value={0} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={1} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={2} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={3} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={4} exprs={this.props.exprs} variableNames={varNames} />
                 <br/>
-                <DigitDisplay value={5} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={6} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={7} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={8} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={9} exprs={this.state.exprs} variableNames={varNames} />
+                <DigitDisplay value={5} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={6} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={7} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={8} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={9} exprs={this.props.exprs} variableNames={varNames} />
             </div>
 
             <p>
@@ -68,17 +79,26 @@ class OptimalFunctions extends React.Component {
                 <thead>
                 <tr>
                     <th scope='col'>Segment</th>
-                    <th scope='col'>Function</th>
+                    <th colSpan='2' scope='col'>Function</th>
                     <th scope='col'>Transistors needed</th>
                 </tr>
                 </thead>
                 <tbody>
                     {rows}
+                    <tr className={'first total-transistors'}>
+                        <td/>
+                        <td/>
+                        <td className={'label'}>Total transistors — original</td>
+                        <td className={'transistors'}>
+                            {originalTotalTransistorCount}
+                        </td>
+                    </tr>
                     <tr className={'total-transistors'}>
                         <td/>
                         <td/>
+                        <td className={'label'}>Total transistors — optimized</td>
                         <td className={'transistors'}>
-                            Total: {totalTransistorCount}
+                            {totalTransistorCount}
                         </td>
                     </tr>
                 </tbody>
@@ -86,6 +106,7 @@ class OptimalFunctions extends React.Component {
         </>);
     }
 
+    /*
     handleChange(box, index) {
         const text = box.value;
 
@@ -140,6 +161,7 @@ class OptimalFunctions extends React.Component {
             exprs: newExprs,
         });
     }
+     */
 
     transistorsUsed(expr) {
         if (!expr)
@@ -183,8 +205,6 @@ class OptimalFunctions extends React.Component {
         };
 
         count(expr);
-
-        console.log(invertedVariables);
 
         transistorCount += invertedVariables.size;
 

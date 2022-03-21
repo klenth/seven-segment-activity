@@ -64,7 +64,6 @@ export default class TruthTableSegments extends React.Component {
         if (value !== '' && value !== '0' && value !== '1')
             return;
 
-        console.log('Setting value (' + index + ', ' + output + ') to ' + value);
         if (value === '0')
             value = 0;
         else if (value === '1')
@@ -82,7 +81,6 @@ export default class TruthTableSegments extends React.Component {
     }
 
     handleCopy() {
-        console.log("Copying!");
         // Encode each row as a base-3 number (0=0, 1=1, 2=null)
         const rows = [...Array(10).keys()].map(i => {
             let value = 0;
@@ -93,14 +91,11 @@ export default class TruthTableSegments extends React.Component {
             return value;
         });
         const data = util.encode(rows);
-        navigator.clipboard.writeText(data).then(() => console.log("Copied"));
     }
 
     handlePaste() {
-        console.log("Pasting!");
         const pastedText = document.getElementById('truth-table-paste-box').value;
         const data = util.decode(pastedText);
-        console.log(data);
 
         if (!(data instanceof Array) || data.length !== this.state.slots.length)
             console.warn("Invalid pasted data");

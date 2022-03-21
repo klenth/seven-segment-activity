@@ -15,11 +15,22 @@
     background-color: #00B5E220;
 }
 
+.boolean-functions tr td {
+    padding: 8px 0;
+}
+
 .boolean-functions tr td input {
     border: none;
     background-color: transparent;
     width: 30em;
     text-align: center;
+    font-size: 1.1rem;
+    font-family: monospace;
+    border-bottom: 2px dotted var(--color-for-chrome);
+}
+
+.boolean-functions tr td input:focus, .boolean-functions tr td input:focus-visible {
+    outline: none;
 }
 
 .boolean-functions tbody tr.invalid td.expression {

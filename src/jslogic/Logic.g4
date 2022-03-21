@@ -28,6 +28,8 @@ returns [String op]
 
 POSTNOT
     : '\''
+    | '’'
+    | '‘'
     ;
     
 AND

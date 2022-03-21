@@ -6,19 +6,12 @@ import DigitDisplay from './digit-display';
 import './boolean-functions.css';
 
 class BooleanFunctions extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            exprs:  Array(7).fill(null),
-        };
-    }
-    
     render() {
         const varNames = ['w', 'x', 'y', 'z'];
         const segmentNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 
         const rowClasses = Array(7).fill(null);
-        this.state.exprs.forEach((expr, i) => {
+        this.props.exprs.forEach((expr, i) => {
             if (expr === undefined)
                 rowClasses[i] = 'invalid';
         });
@@ -32,7 +25,7 @@ class BooleanFunctions extends React.Component {
                 <td className={'expression'}>
                     <input
                         type={'text'}
-                        onChange={(e) => this.handleChange(e.target, i)}
+                        onChange={(e) => this.props.handleChange(e.target, i)}
                     />
                 </td>
             </tr>
@@ -40,17 +33,17 @@ class BooleanFunctions extends React.Component {
 
         return (<>
             <div className='digit-displays'>
-                <DigitDisplay value={0} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={1} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={2} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={3} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={4} exprs={this.state.exprs} variableNames={varNames} />
+                <DigitDisplay value={0} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={1} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={2} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={3} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={4} exprs={this.props.exprs} variableNames={varNames} />
                 <br/>
-                <DigitDisplay value={5} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={6} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={7} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={8} exprs={this.state.exprs} variableNames={varNames} />
-                <DigitDisplay value={9} exprs={this.state.exprs} variableNames={varNames} />
+                <DigitDisplay value={5} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={6} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={7} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={8} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={9} exprs={this.props.exprs} variableNames={varNames} />
             </div>
             
             <p>
@@ -119,7 +112,7 @@ class BooleanFunctions extends React.Component {
         if (!valid)
             newExpr = undefined;
 
-        const newExprs = this.state.exprs.slice();
+        const newExprs = this.props.exprs.slice();
         newExprs[index] = newExpr;
         this.setState({
             exprs: newExprs,
