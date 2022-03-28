@@ -8,39 +8,39 @@ export default class TruthTableSegments extends React.Component {
     constructor(props) {
         super(props);
 
-        const slots = Array(10).fill(null);
+        /*const slots = Array(10).fill(null);
 
         for (let i = 0; i < slots.length; ++i)
             slots[i] = Array(this.props.outputs.length).fill(null);
 
         this.state = {
             slots: slots,
-        };
+        };*/
     }
 
     render() {
         return (
             <>
                 <div className='digit-displays'>
-                    <DigitDisplay value={0} bits={this.state.slots[0]} />
-                    <DigitDisplay value={1} bits={this.state.slots[1]} />
-                    <DigitDisplay value={2} bits={this.state.slots[2]} />
-                    <DigitDisplay value={3} bits={this.state.slots[3]} />
-                    <DigitDisplay value={4} bits={this.state.slots[4]} />
+                    <DigitDisplay value={0} bits={this.props.slots[0]} />
+                    <DigitDisplay value={1} bits={this.props.slots[1]} />
+                    <DigitDisplay value={2} bits={this.props.slots[2]} />
+                    <DigitDisplay value={3} bits={this.props.slots[3]} />
+                    <DigitDisplay value={4} bits={this.props.slots[4]} />
                     <br/>
-                    <DigitDisplay value={5} bits={this.state.slots[5]} />
-                    <DigitDisplay value={6} bits={this.state.slots[6]} />
-                    <DigitDisplay value={7} bits={this.state.slots[7]} />
-                    <DigitDisplay value={8} bits={this.state.slots[8]} />
-                    <DigitDisplay value={9} bits={this.state.slots[9]} />
+                    <DigitDisplay value={5} bits={this.props.slots[5]} />
+                    <DigitDisplay value={6} bits={this.props.slots[6]} />
+                    <DigitDisplay value={7} bits={this.props.slots[7]} />
+                    <DigitDisplay value={8} bits={this.props.slots[8]} />
+                    <DigitDisplay value={9} bits={this.props.slots[9]} />
                 </div>
 
                 <TruthTable
                     inputs={['w', 'x', 'y', 'z']}
                     outputs={['a', 'b', 'c', 'd', 'e', 'f', 'g']}
                     rowCount={10}
-                    slots={this.state.slots}
-                    handleChange={(index, output, value) => this.handleChange(index, output, value)}
+                    slots={this.props.slots}
+                    handleChange={(index, output, value) => this.props.handleChange(index, output, value)}
                 />
 
                 <div className={'clipboard-controls'}>
@@ -60,6 +60,7 @@ export default class TruthTableSegments extends React.Component {
         )
     }
 
+    /*
     handleChange(index, output, value) {
         if (value !== '' && value !== '0' && value !== '1')
             return;
@@ -71,7 +72,7 @@ export default class TruthTableSegments extends React.Component {
         else
             value = null;
 
-        const newSlots = this.state.slots.slice();
+        const newSlots = this.props.slots.slice();
         newSlots[index] = newSlots[index].slice();
         newSlots[index][output] = value;
 
@@ -79,14 +80,15 @@ export default class TruthTableSegments extends React.Component {
             slots: newSlots,
         })
     }
+    */
 
     handleCopy() {
         /*
         // Encode each row as a base-3 number (0=0, 1=1, 2=null)
         const rows = [...Array(10).keys()].map(i => {
             let value = 0;
-            for (let j = 0; j < this.state.slots[i].length; ++j) {
-                let d = (this.state.slots[i][j] === null) ? 2 : this.state.slots[i][j];
+            for (let j = 0; j < this.props.slots[i].length; ++j) {
+                let d = (this.props.slots[i][j] === null) ? 2 : this.props.slots[i][j];
                 value = 3 * value + d;
             }
             return value;
@@ -95,7 +97,7 @@ export default class TruthTableSegments extends React.Component {
         */
 
         const csv = util.join('\n', [...Array(10).keys()].map(i => {
-            return util.join('\t', this.state.slots[i].map(s => (s === null) ? '' : '' + s));
+            return util.join('\t', this.props.slots[i].map(s => (s === null) ? '' : '' + s));
         }));
 
         navigator.clipboard.writeText(csv);
@@ -106,14 +108,14 @@ export default class TruthTableSegments extends React.Component {
         const pastedText = document.getElementById('truth-table-paste-box').value;
         const data = util.decode(pastedText);
 
-        if (!(data instanceof Array) || data.length !== this.state.slots.length)
+        if (!(data instanceof Array) || data.length !== this.props.slots.length)
             console.warn("Invalid pasted data");
         else {
-            const newSlots = this.state.slots.slice();
+            const newSlots = this.props.slots.slice();
             for (let i = 0; i < data.length; ++i) {
                 newSlots[i] = newSlots[i].slice();
                 let value = parseInt(data[i]);
-                for (let j = this.state.slots[i].length - 1; j >= 0; --j) {
+                for (let j = this.props.slots[i].length - 1; j >= 0; --j) {
                     const d = value % 3;
                     newSlots[i][j] = (d === 2) ? null : d;
                     value = util.integer_quotient(value, 3);

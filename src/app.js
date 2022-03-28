@@ -14,6 +14,7 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
+            truthTableSlots: [...Array(10)].map(_ => Array(7).fill(null)),
             exprs: Array(7).fill(null),
             optimizedExprs: Array(7).fill(null),
         };
@@ -138,6 +139,8 @@ export default class App extends React.Component {
                             inputs={['w', 'x', 'y', 'z']}
                             outputs={['a', 'b', 'c', 'd', 'e', 'f', 'g']}
                             rowCount={10}
+                            slots={this.state.truthTableSlots}
+                            handleChange={(index, output, value) => this.handleTruthTableSlotChange(index, output, value)}
                         />
 
                         <div className='total points'>20 points</div>
@@ -191,6 +194,27 @@ export default class App extends React.Component {
                 </div>
             </>
         );
+    }
+
+    handleTruthTableSlotChange(index, output, value) {
+        if (value !== '' && value !== '0' && value !== '1')
+            return;
+
+        if (value === '0')
+            value = 0;
+        else if (value === '1')
+            value = 1;
+        else
+            value = null;
+
+        const newSlots = this.state.truthTableSlots.slice();
+        newSlots[index] = newSlots[index].slice();
+        newSlots[index][output] = value;
+
+        this.setState({
+            ...this.state,
+            truthTableSlots: newSlots,
+        });
     }
 
     handleBooleanFunctionChange(exprs, box, index) {
