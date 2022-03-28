@@ -24,6 +24,7 @@
     border: none;
     font-family: monospace;
     background-color: transparent;
+    border-bottom: 2px dotted var(--color-for-chrome);
 }
 
 .truth-table tbody tr:nth-child(2n) > * {

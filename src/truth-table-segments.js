@@ -81,6 +81,7 @@ export default class TruthTableSegments extends React.Component {
     }
 
     handleCopy() {
+        /*
         // Encode each row as a base-3 number (0=0, 1=1, 2=null)
         const rows = [...Array(10).keys()].map(i => {
             let value = 0;
@@ -91,9 +92,17 @@ export default class TruthTableSegments extends React.Component {
             return value;
         });
         const data = util.encode(rows);
+        */
+
+        const csv = util.join('\n', [...Array(10).keys()].map(i => {
+            return util.join('\t', this.state.slots[i].map(s => (s === null) ? '' : '' + s));
+        }));
+
+        navigator.clipboard.writeText(csv);
     }
 
     handlePaste() {
+        /*
         const pastedText = document.getElementById('truth-table-paste-box').value;
         const data = util.decode(pastedText);
 
@@ -115,5 +124,17 @@ export default class TruthTableSegments extends React.Component {
             newState.slots = newSlots;
             this.setState(newState);
         }
+        */
+
+        const textarea = document.createElement("textarea");
+        textarea.style.position = 'fixed';
+        textarea.style.left = '0';
+        textarea.style.top = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        document.execCommand('paste');
+        const data = textarea.innerText;
+        console.log(data);
+        //document.body.removeChild(textarea);
     }
 }

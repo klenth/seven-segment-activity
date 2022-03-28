@@ -94,18 +94,18 @@ export default class App extends React.Component {
                     </div>
 
                     <p>
-                        In a seven-segment display component, there are seven input wires, each controlling whether one
+                        In a seven-segment display component, there are seven input wires, called a through g, each controlling whether one
                         of the seven segments is illuminated. Your task in this activity is to determine a Boolean
                         function for each of those seven input wires so that the display correctly shows each of the 10
                         digits, 0 through 9.
                     </p>
 
                     <p className="centered">
-                        <img src='../public/seven-segment-display-adapter.png' />
+                        <img src='seven-segment-display-adapter.png' />
                     </p>
 
                     <p>
-                        Specifically, you will have four Boolean inputs representing the four bits of the number (0000
+                        Specifically, you will have four Boolean inputs w, x, y, and z, representing the four bits of the number (0000
                         for 0 through 1001 for 9). Using those, you will construct seven Boolean functions, one for each
                         segment of the display, so that the display shows each digit correctly.
                     </p>
@@ -173,11 +173,11 @@ export default class App extends React.Component {
                         <div className='title'>Optimization</div>
 
                         <p>
-                            Use Karnaugh maps to derive <em>optimal</em> SoP or PoS functions, using as few logic gates (and hence transistors) as possible. Fill in the table below, which will show you how many transistors are used in total by your functions.
+                            Use Karnaugh maps to derive <em>optimal</em> SoP or PoS functions, using as few logic gates (and hence transistors) as possible. Fill in the table below, which will show you how many transistors are used in total by your functions. The functions you wrote above are automatically included in the table; you only need to fill in the <em>(optimized)</em> ones.
                         </p>
 
                         <p>
-                            Since we don’t care what the seven-segment display would do for inputs greater than 9, you can (and should!) treat the six rows of the truth table corresponding to 10–16 as “don’t-care” values, allowed to be either 0 or 1, which can allow you to produce better (simpler) functions.
+                            Since we don’t care what the seven-segment display would do for inputs greater than 9, you can (and should!) treat the six rows of the truth table corresponding to 10–15 as “don’t-care” values, allowed to be either 0 or 1, which can allow you to produce better (simpler) functions.
                         </p>
 
                         <OptimalFunctions
