@@ -166,7 +166,9 @@ export default class App extends React.Component {
 
                         <BooleanFunctions
                             exprs={this.state.exprs}
-                            handleChange={(box, i) => this.handleBooleanFunctionChange(this.state.exprs, box, i)}/>
+                            handleChange={(box, i) => this.handleBooleanFunctionChange(this.state.exprs, box, i)}
+                            referenceSlots={this.state.truthTableSlots}
+                        />
 
                         <div className='total points'>20 points</div>
                     </div>
@@ -187,6 +189,7 @@ export default class App extends React.Component {
                             exprs={this.state.optimizedExprs}
                             originalExprs={this.state.exprs}
                             handleChange={(box, i) => this.handleBooleanFunctionChange(this.state.optimizedExprs, box, i)}
+                            referenceSlots={this.state.truthTableSlots}
                         />
 
                         <div className='total points'>10 points</div>

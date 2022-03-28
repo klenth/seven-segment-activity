@@ -36,7 +36,7 @@
 
 .seven-segment-display .segment.inconsistent {
     outline-offset: 4px;
-    outline: 3px solid #f00;
+    outline: 3px dotted #f00a;
     z-index: 100;
 }
 

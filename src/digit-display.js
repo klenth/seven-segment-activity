@@ -7,7 +7,7 @@ export default class DigitDisplay extends React.Component {
     render() {
         return (
             <div className='digit-display'>
-                <SevenSegmentDisplay state={this.states()} />
+                <SevenSegmentDisplay state={this.states()} reference={this.props.reference} />
                 <div className='digit'>
                     {this.props.value} <br/>
                     <div className='binary'>

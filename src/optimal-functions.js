@@ -58,17 +58,17 @@ class OptimalFunctions extends React.Component {
 
         return (<>
             <div className='digit-displays'>
-                <DigitDisplay value={0} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={1} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={2} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={3} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={4} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={0} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[0]} />
+                <DigitDisplay value={1} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[1]} />
+                <DigitDisplay value={2} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[2]} />
+                <DigitDisplay value={3} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[3]} />
+                <DigitDisplay value={4} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[4]} />
                 <br/>
-                <DigitDisplay value={5} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={6} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={7} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={8} exprs={this.props.exprs} variableNames={varNames} />
-                <DigitDisplay value={9} exprs={this.props.exprs} variableNames={varNames} />
+                <DigitDisplay value={5} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[5]} />
+                <DigitDisplay value={6} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[6]} />
+                <DigitDisplay value={7} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[7]} />
+                <DigitDisplay value={8} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[8]} />
+                <DigitDisplay value={9} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[9]} />
             </div>
 
             <p>

@@ -7,7 +7,7 @@ class SevenSegmentDisplay extends React.Component {
         const s = this.props.state || Array(7).fill(null);
         const r = this.props.reference || Array(7).fill(null);
 
-        const inc = [...Array(7)].map((_, i) => r[i] !== null && s[i] !== r[i]);
+        const inc = [...Array(7)].map((_, i) => r[i] !== null && s[i] !== null && !!s[i] !== !!r[i]);
 
         return (
             <div className='seven-segment-display'>
