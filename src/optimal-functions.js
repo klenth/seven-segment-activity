@@ -5,6 +5,7 @@ import LogicParser from './jslogic/LogicParser';
 import DigitDisplay from './digit-display';
 import AST from './jslogic/ast';
 import './optimal-functions.css';
+import util from "./util";
 
 class OptimalFunctions extends React.Component {
     render() {
@@ -47,6 +48,7 @@ class OptimalFunctions extends React.Component {
                         <input
                             type={'text'}
                             onChange={(e) => this.props.handleChange(e.target, i)}
+                            value={this.props.exprs[i] && this.props.exprs[i].text || ''}
                         />
                     </td>
                     <td className={'transistors'}>
@@ -75,34 +77,42 @@ class OptimalFunctions extends React.Component {
                 Write Boolean expressions for each segment so that they correctly show each digit above.
             </p>
 
-            <table className={'optimal-functions'}>
-                <thead>
-                <tr>
-                    <th scope='col'>Segment</th>
-                    <th colSpan='2' scope='col'>Function</th>
-                    <th scope='col'>Transistors needed</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                    <tr className={'first total-transistors'}>
-                        <td/>
-                        <td/>
-                        <td className={'label'}>Total transistors — original</td>
-                        <td className={'transistors'}>
-                            {originalTotalTransistorCount}
-                        </td>
+            <div className={'optimal-functions-table-wrapper'}>
+                <table className={'optimal-functions'}>
+                    <thead>
+                    <tr>
+                        <th scope='col'>Segment</th>
+                        <th colSpan='2' scope='col'>Function</th>
+                        <th scope='col'>Transistors needed</th>
                     </tr>
-                    <tr className={'total-transistors'}>
-                        <td/>
-                        <td/>
-                        <td className={'label'}>Total transistors — optimized</td>
-                        <td className={'transistors'}>
-                            {totalTransistorCount}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {rows}
+                        <tr className={'first total-transistors'}>
+                            <td/>
+                            <td/>
+                            <td className={'label'}>Total transistors — original</td>
+                            <td className={'transistors'}>
+                                {originalTotalTransistorCount}
+                            </td>
+                        </tr>
+                        <tr className={'total-transistors'}>
+                            <td/>
+                            <td/>
+                            <td className={'label'}>Total transistors — optimized</td>
+                            <td className={'transistors'}>
+                                {totalTransistorCount}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div className={'clipboard-controls'}>
+                    <button onClick={_ => this.handleCopy()}>
+                        Copy table
+                    </button>
+                </div>
+            </div>
         </>);
     }
 
@@ -164,7 +174,7 @@ class OptimalFunctions extends React.Component {
      */
 
     transistorsUsed(expr) {
-        if (!expr)
+        if (!expr || !expr.ast)
             return null;
 
         const invertedVariables = new Set();
@@ -204,11 +214,32 @@ class OptimalFunctions extends React.Component {
             }
         };
 
-        count(expr);
+        count(expr.ast);
 
         transistorCount += invertedVariables.size;
 
         return transistorCount;
+    }
+
+    handleCopy() {
+        const rows = [...Array(7).keys()].map(i => {
+            const origCols = Array(9).fill('');
+            origCols[0] = this.props.originalExprs[i] && this.props.originalExprs[i].text || '';
+            if (this.props.originalExprs[i] && this.props.originalExprs[i].ast)
+                origCols[8] = '' + this.transistorsUsed(this.props.originalExprs[i]);
+
+            const optCols = Array(9).fill('');
+            optCols[0] = this.props.exprs[i] && this.props.exprs[i].text || '';
+            if (this.props.exprs[i] && this.props.exprs[i].ast)
+                optCols[8] = '' + this.transistorsUsed(this.props.exprs[i]);
+
+
+            return util.join('\t', origCols) + '\n' + util.join('\t', optCols) + '\n';
+        });
+
+        const csv = util.join('', rows);
+
+        navigator.clipboard.writeText(csv);
     }
 }
 

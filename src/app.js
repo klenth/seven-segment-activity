@@ -8,6 +8,7 @@ import OptimalFunctions from "./optimal-functions";
 import antlr4 from "antlr4";
 import LogicLexer from "./jslogic/LogicLexer";
 import LogicParser from "./jslogic/LogicParser";
+import util from "./util";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -223,7 +224,7 @@ export default class App extends React.Component {
     handleBooleanFunctionChange(exprs, box, index) {
         const text = box.value;
 
-        let newExpr = null;
+        let newExpr = {};
 
         let valid = true;
 
@@ -254,8 +255,9 @@ export default class App extends React.Component {
                 lexer.addErrorListener(errorListener);
                 parser.addErrorListener(errorListener);
 
-                newExpr = parser.func().n;
-                const vars = newExpr.getVars();
+                newExpr.ast = parser.func().n;
+
+                const vars = newExpr.ast.getVars();
                 for (let v of vars) {
                     if (v !== 'w' && v !== 'x' && v !== 'y' && v !== 'z')
                         valid = false;
@@ -266,9 +268,8 @@ export default class App extends React.Component {
         }
 
         if (!valid)
-            newExpr = undefined;
-        else if (newExpr)
-            newExpr.text = text;
+            newExpr.ast = undefined;
+        newExpr.text = text;
 
         const newExprs = exprs.slice();
         newExprs[index] = newExpr;

@@ -35,26 +35,20 @@ export default class TruthTableSegments extends React.Component {
                     <DigitDisplay value={9} bits={this.props.slots[9]} />
                 </div>
 
-                <TruthTable
-                    inputs={['w', 'x', 'y', 'z']}
-                    outputs={['a', 'b', 'c', 'd', 'e', 'f', 'g']}
-                    rowCount={10}
-                    slots={this.props.slots}
-                    handleChange={(index, output, value) => this.props.handleChange(index, output, value)}
-                />
+                <div className={'truth-table-wrapper'}>
+                    <TruthTable
+                        inputs={['w', 'x', 'y', 'z']}
+                        outputs={['a', 'b', 'c', 'd', 'e', 'f', 'g']}
+                        rowCount={10}
+                        slots={this.props.slots}
+                        handleChange={(index, output, value) => this.props.handleChange(index, output, value)}
+                    />
 
-                <div className={'clipboard-controls'}>
-                    <button
-                        onClick={() => this.handleCopy()}
-                    >Copy all</button>
-                    <input
-                        type={'text'}
-                        id={'truth-table-paste-box'}
-                        defaultValue={''}
-                        />
-                    <button
-                        onClick={() => this.handlePaste()}
-                    >Import</button>
+                    <div className={'clipboard-controls'}>
+                        <button
+                            onClick={() => this.handleCopy()}
+                        >Copy table</button>
+                    </div>
                 </div>
             </>
         )

@@ -36,3 +36,9 @@
 .boolean-functions tbody tr.invalid td.expression {
     outline: 1px solid red;
 }
+
+.boolean-functions-table-wrapper {
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: 0 auto;
+}

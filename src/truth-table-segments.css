@@ -1,3 +1,28 @@
 .clipboard-controls {
-    /*display: none;*/
+    text-align: right;
+    margin: 8px auto 20px auto;
+}
+
+.truth-table-wrapper {
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: 0 auto;
+}
+
+button {
+    position: relative;
+    color: white;
+    background-color: var(--color-sky);
+    border: none;
+    padding: 2px 8px;
+}
+
+button:hover {
+    background-color: var(--color-thistle);
+}
+
+button:active {
+    top: 1px;
+    left: 1px;
+    background-color: #7349b1;
 }

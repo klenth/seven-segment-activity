@@ -63,3 +63,9 @@
 .optimal-functions tbody tr td input:focus, .optimal-functions input:focus-visible {
     outline: none;
 }
+
+.optimal-functions-table-wrapper {
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: 0 auto;
+}

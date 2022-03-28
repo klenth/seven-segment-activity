@@ -4,6 +4,7 @@ import LogicLexer from './jslogic/LogicLexer';
 import LogicParser from './jslogic/LogicParser';
 import DigitDisplay from './digit-display';
 import './boolean-functions.css';
+import util from "./util";
 
 class BooleanFunctions extends React.Component {
     render() {
@@ -25,6 +26,7 @@ class BooleanFunctions extends React.Component {
                 <td className={'expression'}>
                     <input
                         type={'text'}
+                        value={this.props.exprs[i] && this.props.exprs[i].text || ''}
                         onChange={(e) => this.props.handleChange(e.target, i)}
                     />
                 </td>
@@ -49,74 +51,32 @@ class BooleanFunctions extends React.Component {
             <p>
                 Write Boolean expressions for each segment so that they correctly show each digit above.
             </p>
-            
-            <table className={'boolean-functions'}>
-                <thead>
-                    <tr>
-                        <th scope='col'>Segment</th>
-                        <th scope='col'>Function</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
+
+            <div className={'boolean-functions-table-wrapper'}>
+                <table className={'boolean-functions'}>
+                    <thead>
+                        <tr>
+                            <th scope='col'>Segment</th>
+                            <th scope='col'>Function</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </table>
+
+                <div className={'clipboard-controls'}>
+                    <button onClick={_ => this.handleCopy()}>
+                        Copy table
+                    </button>
+                </div>
+            </div>
         </>);
     }
-    
-    handleChange(box, index) {
-        const text = box.value;
-        
-        let newExpr = null;
 
-        let valid = true;
-
-        if (text !== '') {
-            try {
-                const chars = new antlr4.InputStream(text);
-                const lexer = new LogicLexer(chars);
-                const tokens = new antlr4.CommonTokenStream(lexer);
-                const parser = new LogicParser(tokens);
-
-                const errorListener = {
-                    syntaxError: (recognizer, token, line, column, message, error) => {
-                        valid = false;
-                    },
-                    reportAmbiguity: (recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) => {
-                        valid = false;
-                    },
-                    reportAttemptingFullContext: (recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) => {
-                        valid = false;
-                    },
-                    reportContextSensitivity: (recognizer, dfa, startIndex, stopIndex, prediction, configs) => {
-                        valid = false;
-                    },
-                };
-
-                lexer.removeErrorListeners();
-                parser.removeErrorListeners();
-                lexer.addErrorListener(errorListener);
-                parser.addErrorListener(errorListener);
-
-                newExpr = parser.func().n;
-                const vars = newExpr.getVars();
-                for (let v of vars) {
-                    if (v !== 'w' && v !== 'x' && v !== 'y' && v !== 'z')
-                        valid = false;
-                }
-            } catch {
-                valid = false;
-            }
-        }
-
-        if (!valid)
-            newExpr = undefined;
-
-        const newExprs = this.props.exprs.slice();
-        newExprs[index] = newExpr;
-        this.setState({
-            exprs: newExprs,
-        });
+    handleCopy() {
+        const csv = util.join('\n', [...Array(7).keys()].map(i => this.props.exprs[i].text));
+        navigator.clipboard.writeText(csv);
     }
 }
 

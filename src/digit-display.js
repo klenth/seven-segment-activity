@@ -24,7 +24,7 @@ export default class DigitDisplay extends React.Component {
         if ('bits' in this.props)
             return this.props.bits;
         else if ('exprs' in this.props)
-            return this.props.exprs.map(e =>  e && this.stateFor(e, this.props.value));
+            return this.props.exprs.map(e => e && e.ast && this.stateFor(e, this.props.value));
         else
             return undefined;
     }
@@ -48,8 +48,8 @@ export default class DigitDisplay extends React.Component {
             vars[varNames[1]] = b;
             vars[varNames[2]] = c;
             vars[varNames[3]] = d;
-            return expr.evaluate(vars);
-        } catch {
+            return expr.ast.evaluate(vars);
+        } catch (e) {
             return null;
         }
     }
