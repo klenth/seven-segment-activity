@@ -30,6 +30,10 @@
     position: relative;
 }
 
+.dark-mode .seven-segment-display {
+    --segment-color-off: #0000a880;
+}
+
 .seven-segment-display .segment {
     position: absolute;
 }

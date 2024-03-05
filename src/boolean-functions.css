@@ -27,6 +27,7 @@
     font-size: 1.1rem;
     font-family: monospace;
     border-bottom: 2px dotted var(--color-for-chrome);
+    color: var(--color-for-content-text);
 }
 
 .boolean-functions tr td input:focus, .boolean-functions tr td input:focus-visible {

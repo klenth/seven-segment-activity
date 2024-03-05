@@ -74,6 +74,19 @@ export default class App extends React.Component {
         }
 
         document.addEventListener("scroll", updateCurrent);
+
+        const darkModeToggle = document.querySelector(".dark-mode-toggle");
+        const html = document.querySelector("html");
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener("click", () => {
+                html.classList.toggle("dark-mode");
+                localStorage.setItem("dark-mode", html.classList.contains("dark-mode") ? "yes" : "");
+            });
+        }
+
+        if (localStorage.getItem("dark-mode"))
+            document.querySelector("html").classList.add("dark-mode");
+
     }
 
     render() {
@@ -82,10 +95,10 @@ export default class App extends React.Component {
                 <div
                     className='assignment-info'
                 >
-                    <h1>CMPT 328 — Activity 3.1</h1>
+                    <h1>CMPT 328 — Activity 3.2</h1>
 
                     <p>
-                        <a href="https://en.wikipedia.org/wiki/Seven-segment_display">Seven-segment displays</a> are
+                        <a href="https://en.wikipedia.org/wiki/Seven-segment_display" target="_blank">Seven-segment displays</a> are
                         used in some simple electronics (such as microwaves, digital clocks, etc.), frequently to show
                         lengths of time and such. For example, below is a seven-segment display showing the digit 7:
                     </p>
