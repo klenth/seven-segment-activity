@@ -15,7 +15,7 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            truthTableSlots: [...Array(10)].map(_ => Array(7).fill(null)),
+            truthTableSlots: [...Array(16)].map(_ => Array(7).fill(null)),
             exprs: Array(7).fill(null),
             optimizedExprs: Array(7).fill(null),
         };
@@ -95,7 +95,7 @@ export default class App extends React.Component {
                 <div
                     className='assignment-info'
                 >
-                    <h1>CMPT 328 — Activity 3.2</h1>
+                    <h1>CMPT 328 — Hexadecimal seven segments</h1>
 
                     <p>
                         <a href="https://en.wikipedia.org/wiki/Seven-segment_display" target="_blank">Seven-segment displays</a> are
@@ -110,9 +110,8 @@ export default class App extends React.Component {
 
                     <p>
                         In a seven-segment display component, there are seven input wires, called a through g, each controlling whether one
-                        of the seven segments is illuminated. Your task in this activity is to determine a Boolean
-                        function for each of those seven input wires so that the display correctly shows each of the 10
-                        digits, 0 through 9.
+                        of the seven segments is illuminated. Your task now is to extend the work you did for the digits
+                        0-9 to produce an optimized circuit that can display any <em>hexadecimal</em> digit, 0-9 and A-F.
                     </p>
 
                     <p className="centered">
@@ -121,7 +120,7 @@ export default class App extends React.Component {
 
                     <p>
                         Specifically, you will have four Boolean inputs w, x, y, and z, representing the four bits of the number (0000
-                        for 0 through 1001 for 9). Using those, you will construct seven Boolean functions, one for each
+                        for 0 through 1111 for F). Using those, you will construct seven Boolean functions, one for each
                         segment of the display, so that the display shows each digit correctly.
                     </p>
 
@@ -138,21 +137,22 @@ export default class App extends React.Component {
                             digit. In this table, the four inputs (w, x, y, and z) are the four bits of the number — for
                             example, the number 5 (0101 in binary) would be the row w=0, x=1, y=0, z=1. The seven
                             outputs each represent one of the segments (called a through g) of the seven-segment
-                            display. The truth table has only 10 rows because these are the only rows we care about: it
-                            is assumed that we will never be passed a value greater than 9.
+                            display. The truth table now has all 16 rows because any combination of the four input bits
+                            is valid.
                         </p>
 
                         <p>
-                            Experiment with filling in the truth table and seeing which segments get illuminated as you
-                            put in ones. (Blanks are the same as zeros for purposes of this table.) Once you get the
-                            hang of it, work with your team on filling in the truth table until you are all satisfied
-                            with how each digit is displayed.
+                            Fill in the truth table until you are satisfied with how each digit is displayed. (Note that
+                            you will have to make some sort of compromise in how some of the digits are displayed — for
+                            example, you might display B as a lowercase b, as otherwise it will look identical to an 8).
+                            <br/>
+                            <strong>All sixteen digits <em>must</em> look different from one another in your final table.</strong>
                         </p>
 
                         <TruthTableSegments
                             inputs={['w', 'x', 'y', 'z']}
                             outputs={['a', 'b', 'c', 'd', 'e', 'f', 'g']}
-                            rowCount={10}
+                            rowCount={16}
                             slots={this.state.truthTableSlots}
                             handleChange={(index, output, value) => this.handleTruthTableSlotChange(index, output, value)}
                         />
@@ -172,7 +172,7 @@ export default class App extends React.Component {
                         </p>
 
                         <p>
-                            For each of the seven segments, decide as a team whether it would be better to use
+                            For each of the seven segments, decide whether it would be better to use
                             SoP <code>_ _ _ + _ _ _ + _ _ _</code> or PoS <code>(_ + _ + _)(_ + _ + _)(_ + _ +
                             _)</code> form, then write a function implementing the truth table you filled in above.
                             Don’t worry about Karnaugh mapping it just yet; that’s the next step!
@@ -196,7 +196,7 @@ export default class App extends React.Component {
                         </p>
 
                         <p>
-                            Since we don’t care what the seven-segment display would do for inputs greater than 9, you can (and should!) treat the six rows of the truth table corresponding to 10–15 as “don’t-care” values, allowed to be either 0 or 1, which can allow you to produce better (simpler) functions.
+                            Since all sixteen input bit patterns are now valid, there won’t be any “don't care” bits; you will need to implement each of the seven functions precisely.
                         </p>
 
                         <OptimalFunctions

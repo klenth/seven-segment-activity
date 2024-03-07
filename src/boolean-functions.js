@@ -40,12 +40,18 @@ class BooleanFunctions extends React.Component {
                 <DigitDisplay value={2} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[2]} />
                 <DigitDisplay value={3} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[3]} />
                 <DigitDisplay value={4} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[4]} />
-                <br/>
                 <DigitDisplay value={5} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[5]} />
                 <DigitDisplay value={6} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[6]} />
                 <DigitDisplay value={7} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[7]} />
+                <br/>
                 <DigitDisplay value={8} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[8]} />
                 <DigitDisplay value={9} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[9]} />
+                <DigitDisplay value={10} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[10]} />
+                <DigitDisplay value={11} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[11]} />
+                <DigitDisplay value={12} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[12]} />
+                <DigitDisplay value={13} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[13]} />
+                <DigitDisplay value={14} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[14]} />
+                <DigitDisplay value={15} exprs={this.props.exprs} variableNames={varNames} reference={this.props.referenceSlots[15]} />
             </div>
             
             <p>

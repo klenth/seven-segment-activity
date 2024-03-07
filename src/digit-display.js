@@ -9,7 +9,7 @@ export default class DigitDisplay extends React.Component {
             <div className='digit-display'>
                 <SevenSegmentDisplay state={this.states()} reference={this.props.reference} />
                 <div className='digit'>
-                    {this.props.value} <br/>
+                    {this.props.value.toString(16).toUpperCase()} <br/>
                     <div className='binary'>
                         wxyz
                         <br />

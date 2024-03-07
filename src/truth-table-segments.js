@@ -27,19 +27,25 @@ export default class TruthTableSegments extends React.Component {
                     <DigitDisplay value={2} bits={this.props.slots[2]} />
                     <DigitDisplay value={3} bits={this.props.slots[3]} />
                     <DigitDisplay value={4} bits={this.props.slots[4]} />
-                    <br/>
                     <DigitDisplay value={5} bits={this.props.slots[5]} />
                     <DigitDisplay value={6} bits={this.props.slots[6]} />
                     <DigitDisplay value={7} bits={this.props.slots[7]} />
+                    <br/>
                     <DigitDisplay value={8} bits={this.props.slots[8]} />
                     <DigitDisplay value={9} bits={this.props.slots[9]} />
+                    <DigitDisplay value={0xA} bits={this.props.slots[10]} />
+                    <DigitDisplay value={0xB} bits={this.props.slots[11]} />
+                    <DigitDisplay value={0xC} bits={this.props.slots[12]} />
+                    <DigitDisplay value={0xD} bits={this.props.slots[13]} />
+                    <DigitDisplay value={0xE} bits={this.props.slots[14]} />
+                    <DigitDisplay value={0xF} bits={this.props.slots[15]} />
                 </div>
 
                 <div className={'truth-table-wrapper'}>
                     <TruthTable
                         inputs={['w', 'x', 'y', 'z']}
                         outputs={['a', 'b', 'c', 'd', 'e', 'f', 'g']}
-                        rowCount={10}
+                        rowCount={16}
                         slots={this.props.slots}
                         handleChange={(index, output, value) => this.props.handleChange(index, output, value)}
                     />
