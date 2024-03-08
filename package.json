@@ -2,7 +2,7 @@
   "name": "seven-segment-activity",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cs.westminstercollege.edu/~kathy/current/cmpt328/seven-segments",
+  "homepage": "https://cs.westminstercollege.edu/~kathy/current/cmpt328/seven-segments-hex",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
