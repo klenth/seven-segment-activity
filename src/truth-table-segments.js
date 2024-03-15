@@ -96,7 +96,7 @@ export default class TruthTableSegments extends React.Component {
         const data = util.encode(rows);
         */
 
-        const csv = util.join('\n', [...Array(10).keys()].map(i => {
+        const csv = util.join('\n', [...Array(16).keys()].map(i => {
             return util.join('\t', this.props.slots[i].map(s => (s === null) ? '' : '' + s));
         }));
 
